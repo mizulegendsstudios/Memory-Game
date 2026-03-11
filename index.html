@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Juego de Memoria</h1>
+            <p>Encuentra los pares de cartas iguales</p>
+        </header>
+        
+        <main class="game-content">
+            <div class="game-info">
+                <div class="moves">Movimientos: <span id="moves-count">0</span></div>
+                <div class="timer">Tiempo: <span id="time">00:00</span></div>
+                <button id="restart">Reiniciar Juego</button>
+            </div>
+            
+            <div class="game-container" id="game-container">
+                <!-- Las cartas se generarán dinámicamente -->
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 Juego de Memoria. Creado con HTML, CSS y JavaScript.</p>
+        </footer>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
