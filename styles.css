@@ -103,6 +103,7 @@ body {
     perspective: 1000px;
     flex: 1;
     justify-content: center;
+    align-items: center;
 }
 
 /* Card */
@@ -112,8 +113,9 @@ body {
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.6s;
-    max-width: 100px;
-    max-height: 133px;
+    width: 100%;
+    max-width: 120px;
+    max-height: 160px;
 }
 
 .card.flipped {
@@ -135,7 +137,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
     box-shadow: var(--shadow);
     border: 2px solid var(--border-color);
 }
@@ -176,58 +178,75 @@ body {
 }
 
 /* Responsive Design - Grid adjustments */
-@media (max-width: 1200px) {
+@media (min-width: 1200px) {
     .game-container {
         grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 900px) {
-    .game-container {
-        grid-template-columns: repeat(4, 1fr);
-        max-width: 90vw;
+        max-width: 500px;
         margin: 0 auto;
     }
 }
 
-@media (max-width: 700px) {
+@media (min-width: 900px) and (max-width: 1199px) {
+    .game-container {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 450px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 899px) {
+    .game-container {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 699px) {
     .game-container {
         grid-template-columns: repeat(3, 1fr);
+        max-width: 350px;
+        margin: 0 auto;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 499px) {
     .game-container {
         grid-template-columns: repeat(3, 1fr);
-        gap: 0.75rem;
+        max-width: 300px;
+        margin: 0 auto;
     }
     
     .card {
-        max-width: 80px;
-        max-height: 107px;
+        max-width: 90px;
+        max-height: 120px;
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 399px) {
     .game-container {
         grid-template-columns: repeat(2, 1fr);
+        max-width: 250px;
+        margin: 0 auto;
     }
     
     .card {
-        max-width: 70px;
-        max-height: 93px;
+        max-width: 110px;
+        max-height: 147px;
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 319px) {
     .game-container {
         grid-template-columns: repeat(2, 1fr);
+        max-width: 220px;
+        margin: 0 auto;
     }
     
     .card {
-        max-width: 60px;
-        max-height: 80px;
-        font-size: 1.8rem;
+        max-width: 100px;
+        max-height: 133px;
+        font-size: 2rem;
     }
 }
 
@@ -242,8 +261,8 @@ body {
     }
     
     .card {
-        max-width: 50px;
-        max-height: 67px;
-        font-size: 1.2rem;
+        max-width: 80px;
+        max-height: 107px;
+        font-size: 1.5rem;
     }
 }
