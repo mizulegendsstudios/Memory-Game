@@ -23,31 +23,35 @@ body {
     background-color: var(--background-color);
     color: var(--text-primary);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header */
 .header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--border-color);
 }
 
 .header h1 {
     color: var(--primary-color);
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     margin-bottom: 0.5rem;
 }
 
 .header p {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 /* Game Content */
@@ -55,8 +59,11 @@ body {
     background: var(--card-background);
     border-radius: 12px;
     box-shadow: var(--shadow-lg);
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Game Info */
@@ -64,13 +71,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
 .game-info div {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     font-weight: 600;
 }
 
@@ -82,6 +89,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
 }
 
 .game-info button:hover {
@@ -91,9 +99,10 @@ body {
 /* Game Container */
 .game-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     perspective: 1000px;
+    flex: 1;
+    justify-content: center;
 }
 
 /* Card */
@@ -103,6 +112,8 @@ body {
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    max-width: 100px;
+    max-height: 133px;
 }
 
 .card.flipped {
@@ -124,7 +135,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     box-shadow: var(--shadow);
     border: 2px solid var(--border-color);
 }
@@ -146,14 +157,14 @@ body {
 }
 
 .empty-state p {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 /* Footer */
 .footer {
     text-align: center;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
     padding: 1rem 0;
 }
 
@@ -164,27 +175,75 @@ body {
     100% { transform: scale(1) rotateY(180deg); }
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    .container {
-        padding: 1rem;
+/* Responsive Design - Grid adjustments */
+@media (max-width: 1200px) {
+    .game-container {
+        grid-template-columns: repeat(4, 1fr);
     }
+}
 
-    .game-content {
-        padding: 1.5rem;
+@media (max-width: 900px) {
+    .game-container {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 90vw;
+        margin: 0 auto;
     }
+}
 
-    .header h1 {
-        font-size: 2rem;
-    }
-
+@media (max-width: 700px) {
     .game-container {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .game-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+    
+    .card {
+        max-width: 80px;
+        max-height: 107px;
     }
 }
 
 @media (max-width: 400px) {
     .game-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .card {
+        max-width: 70px;
+        max-height: 93px;
+    }
+}
+
+@media (max-width: 320px) {
+    .game-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .card {
+        max-width: 60px;
+        max-height: 80px;
+        font-size: 1.8rem;
+    }
+}
+
+/* Ensure no scroll on mobile */
+@media (max-height: 600px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .game-content {
+        padding: 1rem;
+    }
+    
+    .card {
+        max-width: 50px;
+        max-height: 67px;
+        font-size: 1.2rem;
     }
 }
