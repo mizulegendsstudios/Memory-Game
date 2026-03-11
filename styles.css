@@ -107,6 +107,8 @@ body {
     flex: 1;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
     padding: 1rem;
 }
 
@@ -117,6 +119,8 @@ body {
     cursor: pointer;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    min-width: 80px;
+    min-height: 107px;
     width: 100%;
     max-width: 120px;
     max-height: 160px;
@@ -144,7 +148,7 @@ body {
     font-size: clamp(1.8rem, 6vw, 2.8rem);
     box-shadow: var(--shadow-lg);
     border: 3px solid var(--border-color);
-    transition: var(--transition);
+    overflow: hidden;
 }
 
 /* Diseño de la carta trasera - estilo de carta real */
@@ -242,6 +246,8 @@ body {
     }
     
     .card {
+        min-width: 100px;
+        min-height: 133px;
         max-width: 100px;
         max-height: 133px;
     }
@@ -255,6 +261,8 @@ body {
     }
     
     .card {
+        min-width: 125px;
+        min-height: 167px;
         max-width: 125px;
         max-height: 167px;
     }
@@ -268,6 +276,8 @@ body {
     }
     
     .card {
+        min-width: 110px;
+        min-height: 147px;
         max-width: 110px;
         max-height: 147px;
         font-size: 2rem;
@@ -285,8 +295,10 @@ body {
     }
     
     .card {
-        max-width: 90px;
-        max-height: 120px;
+        min-width: 80px;
+        min-height: 107px;
+        max-width: 80px;
+        max-height: 107px;
         font-size: 1.5rem;
     }
     
