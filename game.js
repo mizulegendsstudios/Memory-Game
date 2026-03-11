@@ -9,15 +9,54 @@ function MemoryGame() {
     this.movesCount = document.getElementById('moves-count');
     this.timeDisplay = document.getElementById('time');
     this.restartButton = document.getElementById('restart');
+    this.audioContext = null;
+    this.sounds = {};
     
     this.initialize();
 }
 
 MemoryGame.prototype.initialize = function() {
+    this.createAudioContext();
+    this.createSounds();
     this.createCards();
     this.renderCards();
     this.setupEventListeners();
     this.startTimer();
+};
+
+MemoryGame.prototype.createAudioContext = function() {
+    // Crear contexto de audio para generar sonidos
+    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+};
+
+MemoryGame.prototype.createSounds = function() {
+    // Sonido al voltear carta
+    this.sounds.flip = this.createSound(200, 0.1, 'sine');
+    
+    // Sonido al emparejar
+    this.sounds.match = this.createSound(800, 0.2, 'sine');
+    
+    // Sonido de error
+    this.sounds.error = this.createSound(100, 0.15, 'sawtooth');
+};
+
+MemoryGame.prototype.createSound = function(frequency, duration, type) {
+    return function() {
+        const oscillator = this.audioContext.createOscillator();
+        const gainNode = this.audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(this.audioContext.destination);
+        
+        oscillator.frequency.value = frequency;
+        oscillator.type = type;
+        
+        gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration);
+        
+        oscillator.start(this.audioContext.currentTime);
+        oscillator.stop(this.audioContext.currentTime + duration);
+    }.bind(this);
 };
 
 MemoryGame.prototype.createCards = function() {
@@ -53,8 +92,10 @@ MemoryGame.prototype.createCardElement = function(emoji, index) {
     card.dataset.index = index;
     
     card.innerHTML = `
-        <div class="card-front">${emoji}</div>
-        <div class="card-back">?</div>
+        <div class="card-front">
+            <span class="card-emoji">${emoji}</span>
+        </div>
+        <div class="card-back"></div>
     `;
     
     return card;
@@ -74,6 +115,9 @@ MemoryGame.prototype.setupEventListeners = function() {
 };
 
 MemoryGame.prototype.flipCard = function(card) {
+    // Reproducir sonido de volteo
+    this.sounds.flip();
+    
     card.classList.add('flipped');
     this.flippedCards.push(card);
     
@@ -86,8 +130,8 @@ MemoryGame.prototype.flipCard = function(card) {
 
 MemoryGame.prototype.checkMatch = function() {
     const [card1, card2] = this.flippedCards;
-    const emoji1 = card1.querySelector('.card-front').textContent;
-    const emoji2 = card2.querySelector('.card-front').textContent;
+    const emoji1 = card1.querySelector('.card-emoji').textContent;
+    const emoji2 = card2.querySelector('.card-emoji').textContent;
     
     if (emoji1 === emoji2) {
         this.handleMatch(card1, card2);
@@ -99,6 +143,9 @@ MemoryGame.prototype.checkMatch = function() {
 };
 
 MemoryGame.prototype.handleMatch = function(card1, card2) {
+    // Reproducir sonido de emparejamiento
+    this.sounds.match();
+    
     setTimeout(() => {
         card1.classList.add('matched');
         card2.classList.add('matched');
@@ -107,7 +154,7 @@ MemoryGame.prototype.handleMatch = function(card1, card2) {
         if (document.querySelectorAll('.matched').length === this.cards.length) {
             this.endGame();
         }
-    }, 500);
+    }, 300);
 };
 
 MemoryGame.prototype.handleMismatch = function(card1, card2) {
@@ -133,9 +180,34 @@ MemoryGame.prototype.updateTimerDisplay = function() {
 MemoryGame.prototype.endGame = function() {
     clearInterval(this.timerInterval);
     
+    // Reproducir sonido de victoria
+    this.createVictorySound();
+    
     setTimeout(() => {
         alert(`¡Felicidades! Completaste el juego en ${this.moves} movimientos y ${this.timeDisplay.textContent}`);
     }, 500);
+};
+
+MemoryGame.prototype.createVictorySound = function() {
+    const notes = [523, 659, 784, 1047]; // Do, Mi, Sol, Do alto
+    notes.forEach((frequency, index) => {
+        setTimeout(() => {
+            const oscillator = this.audioContext.createOscillator();
+            const gainNode = this.audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(this.audioContext.destination);
+            
+            oscillator.frequency.value = frequency;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
+            
+            oscillator.start(this.audioContext.currentTime);
+            oscillator.stop(this.audioContext.currentTime + 0.3);
+        }, index * 150);
+    });
 };
 
 MemoryGame.prototype.restartGame = function() {
