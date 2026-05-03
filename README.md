@@ -66,4 +66,5 @@ Si lo usas o mejoras, ¡no olvides dar crédito!
 
 ## 🌐 Demo en GitHub Pages
 Puedes jugar directamente aquí:  
-👉 Memory Game – Emoji Edition [(usuario.github.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fusuario.github.io%2Fmemory-game")
+👉 Memory Game – Emoji Edition [(usuario.github.io in Bing)](https://www.bing.com/search?q="https%3A%2F%2Fmizulegendsstudios.github.io%2Fmemory-game%2F
+")
