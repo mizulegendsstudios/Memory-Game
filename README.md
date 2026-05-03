@@ -1,70 +1,67 @@
 # 🎮 Memory Game – Emoji Edition
 
-Un divertido **memory game** hecho en **JavaScript Vanilla**, donde el reto es encontrar pares de cartas con emojis.  
-Incluye sonidos generados con **Web Audio API**, contador de movimientos, temporizador y reinicio rápido.
+A fun **memory game** built with **Vanilla JavaScript**, where the challenge is to match pairs of emoji cards.  
+Includes dynamic sounds using the **Web Audio API**, a move counter, a timer, and a restart button.
 
 ---
 
-## ✨ Características
-- 🔊 **Sonidos dinámicos** al voltear, emparejar y ganar.
-- 🃏 **Cartas con emojis** coloridos y fáciles de reconocer.
-- ⏱️ **Temporizador en vivo** y contador de movimientos.
-- 🔄 **Botón de reinicio** para empezar de nuevo.
-- 🎉 **Animación de victoria** con sonido especial al completar el juego.
+## ✨ Features
+- 🔊 **Dynamic sounds** when flipping, matching, and winning.
+- 🃏 **Emoji cards** for a colorful and playful experience.
+- ⏱️ **Live timer** and move counter.
+- 🔄 **Restart button** to start over anytime.
+- 🎉 **Victory animation** with a special sound when the game is completed.
 
 ---
 
-## 🚀 Cómo jugar
-1. Haz clic en una carta para voltearla.
-2. Encuentra su pareja entre las demás.
-3. Si las cartas coinciden, se quedan descubiertas.
-4. Si no coinciden, se voltean de nuevo.
-5. El juego termina cuando todas las parejas están encontradas.
+## 🚀 How to Play
+1. Click on a card to flip it.
+2. Find its matching pair among the others.
+3. If the cards match, they stay revealed.
+4. If not, they flip back after a short delay.
+5. The game ends when all pairs are matched.
 
 ---
 
-## 🛠️ Instalación y uso
-Clona el repositorio y abre el archivo `index.html` en tu navegador:
-
-```bash
-git clone https://github.com/usuario/memory-game.git
-cd memory-game
-open index.html
-```
+## 🛠️ Installation & Usage
+Play directly here:  
+👉 [https://mizulegendsstudios.github.io/memory-game/](https://mizulegendsstudios.github.io/memory-game/)
 
 ---
 
-## 📂 Estructura del proyecto
+## 📂 Project Structure
 ```
 memory-game/
 │── index.html
 │── style.css
 │── script.js
 │── README.md
+│── README.es.md
+│── ROADMAP.md
 ```
 
 ---
 
-## 🔑 SEO y visibilidad
-Este proyecto está optimizado para aparecer en buscadores:
-- **Título:** incluye la keyword `memory game` para búsquedas directas.
-- **Descripción:** clara y atractiva para usuarios y motores de búsqueda.
-- **Etiquetas (topics):** `memory-game`, `javascript-game`, `puzzle`, `brain-training`.
+## 🔑 SEO & Visibility
+Optimized for search engines:
+- **Title:** includes the keyword `memory game` for direct searches.
+- **Description:** clear and attractive for both users and search engines.
+- **Topics (tags):** `memory-game`, `javascript-game`, `puzzle`, `brain-training`.
 
 ---
 
-## 📸 Capturas de pantalla
-*(Agrega aquí imágenes del juego en acción para mayor impacto visual)*
+## 📸 Screenshots
+*(Add screenshots of the game in action here for better visual impact)*
 
 ---
 
-## 📜 Licencia
-Este proyecto está bajo la licencia **MIT**.  
-Si lo usas o mejoras, ¡no olvides dar crédito!
+## 📜 License
+This project is licensed under the **GNU AGPL-3.0 License**.  
+Feel free to use, modify, and share with proper attribution.
 
 ---
 
-## 🌐 Demo en GitHub Pages
+## 🌐 Demo on GitHub Pages
 👉 Memory Game – Emoji Edition  
-[Play on GitHub Pages](https://mizulegendsstudios.github.io/memory-game/)
+[Play on GitHub Pages](https://mizulegendsstudios.github.io/memory-game/)  
 [View in Bing](https://www.bing.com/search?q=https%3A%2F%2Fmizulegendsstudios.github.io%2Fmemory-game%2F)
