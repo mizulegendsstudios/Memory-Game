@@ -34,7 +34,7 @@ Play directly here:
 memory-game/
 │── index.html
 │── style.css
-│── script.js
+│── game.js
 │── README.md
 │── README.es.md
 │── ROADMAP.md
